@@ -39,7 +39,7 @@ export interface UserInfoRespnose {
   receptTime: string;
 }
 
-const url = "http://localhost:8000";
+const url = "https://48fb9690-7d5e-4251-81e4-5672eb698679.mock.pstmn.io";
 
 const usePrivateFeed = () => {
   const [news, setNews] = useState<PrivateNewsResponse[]>([]);
