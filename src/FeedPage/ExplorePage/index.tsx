@@ -22,13 +22,7 @@ const ExplorePage = () => {
             summary={item.content}
             author={item.date}
             originalURL={item.originalURL}
-            isLiked={
-              item.liked_user.find((num) => {
-                store.get("user").id === num;
-              }) === -1
-                ? false
-                : true
-            }
+            isLiked={item.liked_user.includes(store.get("user").id)}
           />
         );
       })}

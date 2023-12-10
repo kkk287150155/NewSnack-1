@@ -4,13 +4,19 @@ import NewsItem from "./NewsItem";
 import Title from "./Title";
 import SubTitle from "./SubTitle";
 import Divider from "@mui/material/Divider";
-import { PrivateNewsResponse, usePrivateFeed } from "../../apiHook";
+import {
+  PrivateNewsResponse,
+  usePrivateFeed,
+  useUserInfo,
+} from "../../apiHook";
 import store from "../../localStorage";
 import { useState } from "react";
 
 const HomePage = () => {
   const [render, setRender] = useState(false);
   const news = usePrivateFeed();
+  const userInfo = useUserInfo();
+  store.set("user", userInfo);
 
   const toggleLike = (item: PrivateNewsResponse) => {
     news.find((newsItem) => newsItem.id === item.id)!.likeOrDislike =

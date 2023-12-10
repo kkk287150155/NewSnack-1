@@ -5,7 +5,6 @@ import Header from "./Header";
 import TopSection from "./TopSection";
 import MiddleSection from "./MiddleSection";
 import BottomSection from "./BottomSection";
-import { Link } from "react-router-dom";
 import { usePublicFeed } from "../apiHook";
 
 const SplashPage = () => {
@@ -13,7 +12,6 @@ const SplashPage = () => {
 
   return news ? (
     <Container>
-      <Link to={"feed"}>임시 피드 이동</Link>
       <Header />
       <TopSection img={news[0].imgURL} />
       <MiddleSection news={news} />

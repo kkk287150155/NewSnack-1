@@ -8,6 +8,7 @@ import SignUp from "./SignUpPage";
 import InitialSetup from "./InitialSetup";
 import FeedPage from "./FeedPage";
 import Redirection from "./SignUpPage/KakaoLogin/Redirection";
+import InterestSetup from "./InterestSetup";
 
 const theme = createTheme({
   typography: {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
   {
     path: "initialsetup",
     element: <InitialSetup />,
+  },
+  {
+    path: "interestsetup",
+    element: <InterestSetup />,
   },
   {
     path: "feed",

@@ -3,21 +3,38 @@ import Box from "@mui/material/Box";
 import NewsItem from "../HomePage/NewsItem";
 import Title from "../HomePage/Title";
 import Divider from "@mui/material/Divider";
+import { useLikedFeed } from "../../apiHook";
 
 const FavoritePage = () => {
+  const { publicNews, privateNews } = useLikedFeed();
+
   return (
     <>
       <Container>
         <Title text="Favorite" />
         <Divider />
-        {mockData.map((news, index) => {
+        {publicNews?.map((item, index) => {
           return (
             <NewsItem
               key={index}
-              thumbnailSrc={news.imgSrc}
-              title={news.newsTitle}
-              summary={news.newsSummary}
-              author={news.author}
+              thumbnailSrc={item.imgURL}
+              originalURL={item.originalURL}
+              title={item.title}
+              summary={item.content}
+              author={item.date}
+              isLiked={true}
+            />
+          );
+        })}
+        {privateNews?.map((item, index) => {
+          return (
+            <NewsItem
+              key={index}
+              thumbnailSrc={item.imgURL}
+              originalURL={item.originalURL}
+              title={item.title}
+              summary={item.content}
+              author={item.date}
               isLiked={true}
             />
           );
@@ -38,90 +55,3 @@ const Container = styled(Box)`
 `;
 
 export default FavoritePage;
-
-const mockData = [
-  {
-    imgSrc: "https://picsum.photos/200/300",
-    newsTitle: "뉴스 제목 1",
-    newsSummary:
-      "뉴스 기사 1 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe vero repudiandae deleniti vitae nam nihil officia omnis porro modi nulla laboriosam, dolorem, vel commodi nostrum, ea asperiores consequatur optio at.",
-    author: "author 1",
-  },
-  {
-    imgSrc: "https://picsum.photos/200/300",
-    newsTitle: "뉴스 제목 2",
-    newsSummary:
-      "뉴스 기사 2 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe vero repudiandae deleniti vitae nam nihil officia omnis porro modi nulla laboriosam, dolorem, vel commodi nostrum, ea asperiores consequatur optio at.",
-    author: "author 2",
-  },
-  {
-    imgSrc: "https://picsum.photos/200/300",
-    newsTitle: "뉴스 제목 3",
-    newsSummary:
-      "뉴스 기사 3 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe vero repudiandae deleniti vitae nam nihil officia omnis porro modi nulla laboriosam, dolorem, vel commodi nostrum, ea asperiores consequatur optio at.",
-    author: "author 3",
-  },
-  {
-    imgSrc: "https://picsum.photos/200/300",
-    newsTitle: "뉴스 제목 1",
-    newsSummary:
-      "뉴스 기사 1 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe vero repudiandae deleniti vitae nam nihil officia omnis porro modi nulla laboriosam, dolorem, vel commodi nostrum, ea asperiores consequatur optio at.",
-    author: "author 1",
-  },
-  {
-    imgSrc: "https://picsum.photos/200/300",
-    newsTitle: "뉴스 제목 2",
-    newsSummary:
-      "뉴스 기사 2 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe vero repudiandae deleniti vitae nam nihil officia omnis porro modi nulla laboriosam, dolorem, vel commodi nostrum, ea asperiores consequatur optio at.",
-    author: "author 2",
-  },
-  {
-    imgSrc: "https://picsum.photos/200/300",
-    newsTitle: "뉴스 제목 3",
-    newsSummary:
-      "뉴스 기사 3 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe vero repudiandae deleniti vitae nam nihil officia omnis porro modi nulla laboriosam, dolorem, vel commodi nostrum, ea asperiores consequatur optio at.",
-    author: "author 3",
-  },
-  {
-    imgSrc: "https://picsum.photos/200/300",
-    newsTitle: "뉴스 제목 1",
-    newsSummary:
-      "뉴스 기사 1 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe vero repudiandae deleniti vitae nam nihil officia omnis porro modi nulla laboriosam, dolorem, vel commodi nostrum, ea asperiores consequatur optio at.",
-    author: "author 1",
-  },
-  {
-    imgSrc: "https://picsum.photos/200/300",
-    newsTitle: "뉴스 제목 2",
-    newsSummary:
-      "뉴스 기사 2 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe vero repudiandae deleniti vitae nam nihil officia omnis porro modi nulla laboriosam, dolorem, vel commodi nostrum, ea asperiores consequatur optio at.",
-    author: "author 2",
-  },
-  {
-    imgSrc: "https://picsum.photos/200/300",
-    newsTitle: "뉴스 제목 3",
-    newsSummary:
-      "뉴스 기사 3 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe vero repudiandae deleniti vitae nam nihil officia omnis porro modi nulla laboriosam, dolorem, vel commodi nostrum, ea asperiores consequatur optio at.",
-    author: "author 3",
-  },
-  {
-    imgSrc: "https://picsum.photos/200/300",
-    newsTitle: "뉴스 제목 1",
-    newsSummary:
-      "뉴스 기사 1 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe vero repudiandae deleniti vitae nam nihil officia omnis porro modi nulla laboriosam, dolorem, vel commodi nostrum, ea asperiores consequatur optio at.",
-    author: "author 1",
-  },
-  {
-    imgSrc: "https://picsum.photos/200/300",
-    newsTitle: "뉴스 제목 2",
-    newsSummary:
-      "뉴스 기사 2 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe vero repudiandae deleniti vitae nam nihil officia omnis porro modi nulla laboriosam, dolorem, vel commodi nostrum, ea asperiores consequatur optio at.",
-    author: "author 2",
-  },
-  {
-    imgSrc: "https://picsum.photos/200/300",
-    newsTitle: "뉴스 제목 3",
-    newsSummary:
-      "뉴스 기사 3 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe vero repudiandae deleniti vitae nam nihil officia omnis porro modi nulla laboriosam, dolorem, vel commodi nostrum, ea asperiores consequatur optio at.",
-    author: "author 3",
-  },
-];

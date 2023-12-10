@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import FooterLabel from "./FooterLabel";
 import Box from "@mui/material/Box";
+import { Button } from "@mui/material";
+import store from "../../localStorage";
 
 const Footer = () => {
   return (
@@ -8,7 +10,17 @@ const Footer = () => {
       <FooterLabel label="About Us" />
       <FooterLabel label="Contact Us" />
       <FooterLabel label="Terms of Service" />
-      <FooterLabel label="Privacy Policy" />
+      <Button
+        onClick={() => {
+          fetch("http://127.0.0.1:8000/api/kuser/kakao/send-to-me/", {
+            headers: {
+              Authorization: `Bearer ${store.get("access_token")}`,
+            },
+          });
+        }}
+      >
+        <FooterLabel label="Privacy Policy" />
+      </Button>
     </Container>
   );
 };

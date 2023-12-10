@@ -26,6 +26,16 @@ export interface PublicNewsResponse {
   disliked_user: number[];
 }
 
+export interface LikedNewsResponse {
+  id: number;
+  title: string;
+  content: string;
+  comment: string;
+  originalURL: string;
+  imgURL: string;
+  date: string;
+}
+
 export interface UserInfoRespnose {
   id: number;
   username: string;
@@ -70,10 +80,38 @@ const usePublicFeed = (interests: string) => {
   return news;
 };
 
+const useLikedFeed = () => {
+  const [publicNews, setPublicNews] = useState<LikedNewsResponse[]>();
+  const [privateNews, setPrivateNews] = useState<LikedNewsResponse[]>();
+  useEffect(() => {
+    fetch(url + `/api/user/liked-feeds/private`, {
+      headers: {
+        Authorization: `Bearer ${store.get("access_token")}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setPrivateNews(data);
+      });
+    fetch(url + `/api/user/liked-feeds/public`, {
+      headers: {
+        Authorization: `Bearer ${store.get("access_token")}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setPublicNews(data);
+      });
+  }, []);
+  return { publicNews, privateNews };
+};
+
 const useUserInfo = () => {
   const [userInfo, setUserInfo] = useState<UserInfoRespnose>();
   useEffect(() => {
-    fetch("url" + "/api/user/dj-rest-auth/user/", {
+    fetch(url + "/api/user/dj-rest-auth/user/", {
       headers: {
         Authorization: `Bearer ${store.get("access_token")}`,
         "Content-Type": "application/json",
@@ -87,4 +125,4 @@ const useUserInfo = () => {
   return userInfo;
 };
 
-export { usePrivateFeed, useUserInfo, usePublicFeed };
+export { usePrivateFeed, useUserInfo, usePublicFeed, useLikedFeed };

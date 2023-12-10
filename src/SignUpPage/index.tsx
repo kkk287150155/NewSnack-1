@@ -69,7 +69,6 @@ function InputField(props: any) {
 export default function SignUp() {
   const navigate = useNavigate();
   const [nameError, setNameError] = React.useState(null);
-  const [emailError, setEmailError] = React.useState(null);
   const [passwordError, setPasswordError] = React.useState(null);
   const [nonFieldError, setNonFieldError] = React.useState(null);
 
@@ -93,7 +92,6 @@ export default function SignUp() {
     if (response.status == 201) {
       const jsonData: signUpResponse = await response.json();
       store.set("user", jsonData.user);
-      store.set("email", data.get("email"));
       store.set("access_token", jsonData.access_token);
       store.set("refresh_token", jsonData.refresh_token);
       console.log(jsonData);
@@ -101,7 +99,6 @@ export default function SignUp() {
     } else {
       const errorData = await response.json();
       setNameError(errorData.username);
-      setEmailError(errorData.email);
       setPasswordError(errorData.password);
       setNonFieldError(errorData.non_field_errors);
     }
