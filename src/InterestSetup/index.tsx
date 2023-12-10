@@ -6,13 +6,13 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { useNavigate } from "react-router-dom";
-import NewsCard from "../InitialSetup/NewsCard";
+import NewsCard from "./NewsCard";
 import store from "../localStorage";
 
 const InterestSetup = () => {
   const news = usePublicFeed("sports");
   const navigate = useNavigate();
-  const [like, setLike] = React.useState(Array(8).fill(0));
+  const [like, setLike] = React.useState(Array(20).fill(0));
   const onClick = () => {
     navigate("/feed");
   };
@@ -45,8 +45,6 @@ const InterestSetup = () => {
       ></NewsCard>
     );
   });
-
-  const toggleLike = (item) => {};
 
   return (
     <Container component="main" maxWidth="sm">

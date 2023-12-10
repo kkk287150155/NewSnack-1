@@ -24,14 +24,9 @@ export default function NewsCard({
   onClick,
 }: NewsCardProps) {
   return (
-    <Card sx={{ minWidth: 345 }}>
+    <Card sx={{ minWidth: 345, maxWidth: 345 }}>
       <CardActionArea>
-        <CardMedia
-          component="img"
-          height="140"
-          image={imgSrc}
-          alt="green iguana"
-        />
+        <CardMedia component="img" height="140" image={imgSrc} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
             {newsTitle}

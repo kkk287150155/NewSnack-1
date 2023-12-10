@@ -23,6 +23,7 @@ const ExplorePage = () => {
             author={item.date}
             originalURL={item.originalURL}
             isLiked={item.liked_user.includes(store.get("user").id)}
+            comment={item.comment}
           />
         );
       })}

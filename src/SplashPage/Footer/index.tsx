@@ -10,7 +10,7 @@ const Footer = () => {
       <FooterLabel label="About Us" />
       <FooterLabel label="Contact Us" />
       <FooterLabel label="Terms of Service" />
-      <Button
+      <div
         onClick={() => {
           fetch("http://127.0.0.1:8000/api/kuser/kakao/send-to-me/", {
             headers: {
@@ -20,7 +20,7 @@ const Footer = () => {
         }}
       >
         <FooterLabel label="Privacy Policy" />
-      </Button>
+      </div>
     </Container>
   );
 };

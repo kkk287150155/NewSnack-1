@@ -23,6 +23,7 @@ const FavoritePage = () => {
               summary={item.content}
               author={item.date}
               isLiked={true}
+              comment={item.comment}
             />
           );
         })}
@@ -36,6 +37,7 @@ const FavoritePage = () => {
               summary={item.content}
               author={item.date}
               isLiked={true}
+              comment={item.comment}
             />
           );
         })}

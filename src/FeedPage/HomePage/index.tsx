@@ -52,6 +52,7 @@ const HomePage = () => {
               originalURL={item.originalURL}
               isLiked={item.likeOrDislike === 1}
               toggleLike={() => toggleLike(item)}
+              comment={item.comment}
             />
           );
         })}
